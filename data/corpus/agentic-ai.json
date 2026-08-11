@@ -1,0 +1,156 @@
+[
+  {
+    "doc_id": "agentic-definitions",
+    "title": "Defining Agentic AI Systems: From Chat Completion to Autonomous Workflows",
+    "url": "https://example.org/agentic/definitions",
+    "publisher": "Journal of Applied Systems Engineering",
+    "published": "2025-09-14",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["agentic ai", "definition", "architecture", "autonomy", "agents"],
+    "content": "An agentic AI system is defined as a software system in which a language model is granted the authority to choose actions, invoke tools, and decide when a task is complete, rather than producing a single response to a single prompt. The defining property is the control loop: the model observes state, selects an action, executes it through a tool interface, observes the result, and repeats until a termination condition is met. Systems that forward a prompt to a model and return the completion unchanged are not agentic under this definition, regardless of how sophisticated the prompt is. Three capabilities separate agentic systems from conversational ones: tool invocation, persistent state across steps, and self-determined termination. A useful practical test is whether removing the loop changes the output; if a single forward pass produces the same result, the agency is decorative. Autonomy in these systems is bounded rather than absolute, because the action space is defined entirely by the tools the engineer exposes. Recent surveys distinguish workflow agents, in which the sequence of steps is fixed by the developer and the model fills in the content, from open agents, in which the model itself decides the sequence. Workflow agents are more predictable and easier to evaluate, while open agents handle a wider range of inputs at the cost of reliability."
+  },
+  {
+    "doc_id": "agentic-tool-use",
+    "title": "Tool Invocation Patterns and Failure Modes in Production Agents",
+    "url": "https://example.org/agentic/tool-use",
+    "publisher": "Systems Reliability Review",
+    "published": "2025-10-02",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["tools", "function calling", "reliability", "failure", "approaches"],
+    "content": "Tool invocation is the mechanism by which an agent affects anything outside its own context window, and it is also where most production failures originate. Analysis of incident reports across deployed agent systems attributes the largest share of failures to malformed tool arguments rather than to flawed reasoning, which suggests that schema design deserves as much engineering attention as prompt design. Constraining tool inputs and outputs with an explicit schema, and validating them before execution, converts a class of silent wrong answers into loud, catchable errors. A second common failure is the retry loop, in which an agent that receives an error calls the same tool with the same arguments repeatedly until a budget is exhausted; bounding the number of rounds is the standard mitigation. A third is tool sprawl: as the number of exposed tools grows, selection accuracy declines, and practitioners generally report better results from a small set of well-named tools than from a large undifferentiated set. Idempotency matters more in agent systems than in conventional software because retries are automatic and frequent. Where a tool has side effects, the recommended pattern is to separate a read-only planning tool from a write tool that requires explicit confirmation."
+  },
+  {
+    "doc_id": "multi-agent-orchestration",
+    "title": "Orchestration Patterns for Multi-Agent Systems: Supervisors, Swarms and Pipelines",
+    "url": "https://example.org/agentic/orchestration",
+    "publisher": "Distributed Intelligence Quarterly",
+    "published": "2025-08-21",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["multi-agent", "orchestration", "supervisor", "approaches", "comparison", "parallel"],
+    "content": "Three orchestration patterns dominate current multi-agent practice. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace. In the pipeline pattern, agents are arranged in a fixed sequence where each stage transforms the output of the previous one, which trades flexibility for predictability and makes each stage independently testable. In the swarm or peer-to-peer pattern, agents hand control to one another directly without a central coordinator, which suits open-ended exploration but makes termination and cost control considerably harder. Comparative evaluations consistently find that the supervisor pattern gives the best reliability-per-unit-complexity for tasks that decompose cleanly, while pipelines are preferred where auditability is a requirement. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker."
+  },
+  {
+    "doc_id": "agent-evaluation",
+    "title": "Evaluating Agents: Why Task Success Rate Is Not Enough",
+    "url": "https://example.org/agentic/evaluation",
+    "publisher": "Evaluation Methods Institute",
+    "published": "2025-11-05",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["evaluation", "evidence", "benchmarks", "metrics", "statistics"],
+    "content": "Evaluating an agent is harder than evaluating a single model response because the output is a trajectory, not a string. Task success rate remains the headline metric, but on its own it hides the two properties operators care about most: cost variance and failure mode. Two agents with identical success rates can differ by an order of magnitude in tokens consumed, and an agent that fails loudly is far more operable than one that fails by producing a plausible but unsupported answer. Practitioners increasingly report trajectory-level metrics alongside outcome metrics, including the number of tool calls per task, the rate of repeated identical calls, and the share of final claims that can be traced to a retrieved document. Groundedness, measured as the proportion of statements in an output that are supported by a cited source, has become a standard acceptance gate for research and summarisation agents. Held-out evaluation sets degrade quickly for agents because tool environments change underneath them, so periodic re-baselining is necessary. Human review remains the reference standard for open-ended outputs, but structured self-critique passes catch a substantial share of issues before a human ever sees the artefact."
+  },
+  {
+    "doc_id": "agent-risks",
+    "title": "Risk Surface of Autonomous Agent Deployments",
+    "url": "https://example.org/agentic/risks",
+    "publisher": "Institute for Safe Automation",
+    "published": "2025-07-30",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["risks", "limitations", "security", "criticism", "safety", "prompt injection"],
+    "content": "The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access. Prompt injection is the most frequently cited unsolved problem: content retrieved from an untrusted source can carry instructions that the model treats as legitimate, and no purely prompt-level defence has proven robust. The standard mitigation is architectural rather than linguistic, isolating untrusted content from privileged tool access and requiring human confirmation for irreversible actions. Cost runaway is a second material risk, because an agent that loops can consume budget without producing output; hard caps on rounds, tokens and wall-clock time are considered baseline hygiene. A third risk is unfounded confidence: agents produce fluent output regardless of whether their retrieval succeeded, so a system that cannot distinguish 'I found nothing' from 'the answer is X' will reliably mislead its users. Critics also note that autonomy is frequently oversold, and that many deployed systems marketed as agents are fixed workflows with a model in the loop, which is not necessarily a defect but does make published capability claims difficult to compare."
+  },
+  {
+    "doc_id": "rag-grounding",
+    "title": "Retrieval Grounding and Citation Discipline in Generated Reports",
+    "url": "https://example.org/agentic/grounding",
+    "publisher": "Information Retrieval Letters",
+    "published": "2025-06-11",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["retrieval", "rag", "citation", "grounding", "evidence", "hallucination"],
+    "content": "Retrieval grounding reduces but does not eliminate unsupported generation, and the residual failures cluster in a predictable place: sentences that summarise or transition between cited claims. Requiring an explicit citation marker on every substantive sentence, and then mechanically auditing those markers after generation, catches a class of error that no amount of instruction alone prevents. A citation audit has three components: coverage, which is the share of claim-bearing sentences carrying a marker; resolution, which checks that every marker points at a document actually present in the retrieval set; and diversity, which counts distinct documents cited. Reports resting on a single source score well on coverage while being, in substance, a summary of one document. Dangling citations, meaning markers pointing at non-existent sources, are the clearest available signal of fabrication and should be treated as a hard failure rather than a warning. Practitioners report that surfacing the audit result to the reader, rather than only logging it, changes how the artefact is used, because a reader who can see that coverage was 62 percent treats the document differently from one who cannot."
+  },
+  {
+    "doc_id": "mcp-standardisation",
+    "title": "Standardising the Tool Layer: Model Context Protocol in Practice",
+    "url": "https://example.org/agentic/mcp",
+    "publisher": "Open Interfaces Working Group",
+    "published": "2025-10-19",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["mcp", "protocol", "tools", "integration", "interoperability", "approaches"],
+    "content": "The Model Context Protocol standardises how an agent discovers and calls external tools, replacing bespoke per-integration glue with a single client-server contract. Its practical benefit is decoupling: a tool server can be written, versioned, tested and deployed independently of the agent that consumes it, and the same server can serve several different agents. Teams adopting the protocol report that the main gain is organisational rather than technical, because tool ownership can sit with the team that owns the underlying system. The trade-off is an additional network hop and a running process to operate, which is unwarranted for a small agent whose tools are three local Python functions. A common compromise is to define tools once in the application and expose them through both an in-process registry and a protocol server, so that local development stays simple while deployment retains the decoupling. Protocol adoption does not by itself solve tool selection, schema quality, or authorisation, all of which remain the responsibility of the tool author."
+  },
+  {
+    "doc_id": "agent-deployment",
+    "title": "Deploying Agents: Containers, Timeouts and the Statelessness Problem",
+    "url": "https://example.org/agentic/deployment",
+    "publisher": "Practical Platform Engineering",
+    "published": "2025-09-28",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["deployment", "containers", "api", "operations", "outlook", "implications"],
+    "content": "Agent workloads have an unusual operational shape: long-running, bursty, heavily IO-bound, and with a latency distribution whose tail is far longer than a typical web request. This breaks default assumptions in most serving stacks, where a sixty-second gateway timeout is common and an agent run may legitimately take several minutes. The prevailing pattern is to accept the request, return a run identifier immediately, and let the client poll or stream, which also makes the system resilient to client disconnection. Containerising the agent alongside its tool servers keeps the deployment reproducible and makes it possible to pin the exact tool versions a given agent was evaluated against. Statelessness is desirable for scaling but conflicts with the need to resume a partially completed run, so run state is typically externalised into a database rather than held in process memory. Observability is not optional at this level of nondeterminism: without a stored trajectory, a failed run cannot be diagnosed after the fact, because rerunning it will not reproduce the failure."
+  },
+  {
+    "doc_id": "human-oversight",
+    "title": "Human Oversight Models for Semi-Autonomous Systems",
+    "url": "https://example.org/agentic/oversight",
+    "publisher": "Governance and Automation Review",
+    "published": "2025-05-16",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["oversight", "human in the loop", "governance", "risks", "implications"],
+    "content": "Oversight models for semi-autonomous systems fall on a spectrum from human-in-the-loop, where every consequential action awaits approval, to human-on-the-loop, where the operator monitors and can intervene, to human-out-of-the-loop, where the system acts unsupervised within preset bounds. The appropriate position depends on the reversibility and blast radius of the actions available, not on the perceived capability of the model. A frequently observed anti-pattern is approval fatigue: when a system requests confirmation for every trivial step, operators approve reflexively, and the oversight becomes nominal. Concentrating confirmation on the small number of irreversible actions preserves its value. Read-only agents that produce documents rather than effects sit naturally at the permissive end of the spectrum, since their outputs are reviewed before they are acted on. Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log."
+  },
+  {
+    "doc_id": "agent-outlook",
+    "title": "Where Agent Engineering Is Heading: Consolidation Over Capability",
+    "url": "https://example.org/agentic/outlook",
+    "publisher": "Technology Forecast Group",
+    "published": "2025-12-01",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["outlook", "future", "trends", "implications", "engineering"],
+    "content": "The near-term trajectory of agent engineering appears to be consolidation rather than capability expansion. The open research problems are increasingly operational: how to evaluate a trajectory, how to bound cost, how to make a run reproducible, and how to establish that an output is grounded. Frameworks are converging on a small set of primitives, namely a typed state object, a graph of nodes, conditional edges, and a checkpointing mechanism, which suggests the abstraction layer is stabilising. Skill-style artefacts, where methodology is stored as reviewable text separate from the code that executes it, are spreading because they let domain experts modify agent behaviour without touching the implementation. A recurring prediction is that the differentiator between systems will not be the underlying model but the quality of the tool layer and the rigour of the evaluation harness. For practitioners entering the field, the practical implication is that the highest-leverage skill is systems engineering discipline applied to a nondeterministic component, rather than familiarity with any particular framework."
+  },
+  {
+    "doc_id": "state-and-memory",
+    "title": "State, Memory and Checkpointing in Graph-Based Agent Frameworks",
+    "url": "https://example.org/agentic/state",
+    "publisher": "Journal of Applied Systems Engineering",
+    "published": "2025-08-04",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["state", "memory", "langgraph", "checkpointing", "definition", "architecture"],
+    "content": "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state. This formulation makes two otherwise awkward things natural: cycles, which express retry and refinement loops, and parallel fan-out, which expresses independent sub-tasks. Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds. Reducers on individual state fields determine how concurrent updates merge, and getting these wrong is a common source of lost work in parallel branches: a field that overwrites rather than appends will silently discard the results of all but one worker. Distinguishing short-term state, which lives for one run, from long-term memory, which persists across runs, avoids a class of design confusion; the former belongs in the state object and the latter belongs in a store. Explicit bounds on cycle count are necessary because a conditional edge that never evaluates to its exit condition produces an infinite loop."
+  },
+  {
+    "doc_id": "structured-outputs",
+    "title": "Structured Outputs as an Engineering Control",
+    "url": "https://example.org/agentic/structured-outputs",
+    "publisher": "Systems Reliability Review",
+    "published": "2025-07-08",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["structured output", "schema", "validation", "reliability", "approaches", "evidence"],
+    "content": "Constraining model output to a declared schema converts an open-ended text interface into a typed one, and the effect on system reliability is substantial. Where free-text hand-offs between components fail silently and are detected downstream by a confused consumer, schema violations fail immediately at the boundary where they occurred. Validation at every inter-agent boundary is the practical recommendation: the planner should not be able to hand the researchers a paragraph where a list of typed sub-questions is expected. Schema strictness also has a cost, because an over-constrained schema forces the model to fabricate values for required fields it has no basis to fill; optional fields with sensible defaults are preferred over required fields with invented content. Enum-typed fields, in particular verdicts and severity levels, are markedly more reliable than the equivalent free-text field and are directly usable in downstream conditionals. Practitioners report that the most valuable schemas are those that make the absence of an answer expressible, so that a component can report that it found nothing without violating its contract."
+  },
+  {
+    "doc_id": "cost-latency",
+    "title": "Cost and Latency Characteristics of Multi-Step Agent Runs",
+    "url": "https://example.org/agentic/cost",
+    "publisher": "Practical Platform Engineering",
+    "published": "2025-11-22",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["cost", "latency", "statistics", "evidence", "limitations", "current state"],
+    "content": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history. Designs that summarise or prune history between steps, or that give each worker only the slice of context it needs, show markedly better cost scaling than designs that append indiscriminately. Latency is dominated by serialisation: a run with five dependent steps cannot be faster than the sum of those steps, whereas five independent steps executed in parallel cost approximately the duration of the slowest. This asymmetry is the main practical argument for decomposing a task into independent sub-tasks wherever the problem structure allows it. Cost variance across runs of the same task is high, and reporting a median without a tail figure understates the operational risk considerably. Caching retrieval results within and across runs is the cheapest available optimisation for research-style workloads, where the same queries recur frequently."
+  },
+  {
+    "doc_id": "agent-education",
+    "title": "Teaching Agent Engineering: What Capstone Projects Reveal",
+    "url": "https://example.org/agentic/education",
+    "publisher": "Computing Education Review",
+    "published": "2025-04-09",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["education", "training", "capstone", "practice", "implications", "outlook"],
+    "content": "Reviews of student capstone projects in agent engineering identify a consistent pattern: projects fail on scoping far more often than on implementation. The strongest submissions share a narrow problem statement, a small tool surface, and an explicit account of what the system does not do. Weaker submissions typically assemble many frameworks without a clear reason for each, producing systems that are difficult to run and difficult to assess. Reviewers report that the presence of a working demonstration path that requires no credentials is the single strongest predictor of a project being evaluated favourably, simply because it is the difference between an assessor seeing the system work and reading a claim that it works. Documentation quality correlates with implementation quality more strongly than expected, which is generally attributed to the fact that explaining an architecture forces its inconsistencies into view. The recommendation to students is to choose a problem small enough to finish and to spend the recovered time on evaluation and documentation rather than on additional components."
+  }
+]

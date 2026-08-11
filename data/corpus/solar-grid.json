@@ -1,0 +1,68 @@
+[
+  {
+    "doc_id": "solar-desert-basics",
+    "title": "Photovoltaic Performance in High-Irradiance Desert Climates",
+    "url": "https://example.org/energy/desert-pv",
+    "publisher": "Renewable Systems Engineering",
+    "published": "2025-03-12",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["solar", "photovoltaic", "desert", "definition", "overview", "irradiance"],
+    "content": "Desert regions combine the highest global horizontal irradiance with the ambient conditions least favourable to photovoltaic conversion efficiency, which makes their net yield a question of engineering rather than of resource availability. Silicon cell efficiency declines as junction temperature rises, so a panel operating in a high ambient environment produces measurably less power per unit of incident energy than the same panel in a temperate one. Elevated mounting, increased row spacing and bifacial modules that exploit reflected ground irradiance are the standard responses. Soiling from airborne dust is the second dominant loss mechanism and, unlike temperature, it accumulates: uncleaned arrays in dusty environments can lose a substantial fraction of output between rainfall events. The economics of desert photovoltaics therefore hinge less on the headline resource figure than on the cost of cleaning, cooling and land preparation over the asset's life."
+  },
+  {
+    "doc_id": "solar-storage",
+    "title": "Storage Sizing for Solar-Dominant Grids",
+    "url": "https://example.org/energy/storage-sizing",
+    "publisher": "Grid Integration Institute",
+    "published": "2025-06-25",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["storage", "batteries", "grid", "approaches", "comparison", "evidence"],
+    "content": "As the solar share of a generation mix rises, the binding constraint shifts from energy to timing, and storage sizing becomes the central design decision. Four-hour lithium-ion systems address the evening ramp economically but do not address multi-day deficits, which require either long-duration storage, dispatchable backup, or interconnection to a neighbouring system. Comparative studies find that overbuilding generation and curtailing surplus is frequently cheaper than sizing storage to absorb every peak, because the last increment of stored energy is used only a few hours per year. Thermal storage paired with concentrated solar power offers longer discharge durations than current battery deployments but at higher capital cost and with siting constraints that photovoltaics do not face. The practical outcome in most published system studies is a hybrid portfolio rather than a single technology."
+  },
+  {
+    "doc_id": "solar-grid-stability",
+    "title": "Inverter-Based Resources and System Stability",
+    "url": "https://example.org/energy/stability",
+    "publisher": "Grid Integration Institute",
+    "published": "2025-08-30",
+    "credibility": "high",
+    "synthetic": true,
+    "tags": ["stability", "inverter", "grid", "risks", "limitations", "frequency"],
+    "content": "Displacing synchronous generation with inverter-based resources removes the rotating mass that has historically supplied a grid's inertial response, so frequency deviations propagate faster in systems with high renewable penetration. Grid-forming inverters can synthesise an inertial response and are increasingly required by connection codes, but deployment lags the growth of the resources themselves. Voltage support and fault current contribution present a parallel problem, since conventional protection schemes were designed around the fault behaviour of synchronous machines. The associated risk is not that such systems cannot be stabilised but that stabilisation requirements are frequently identified after connection rather than before, producing retrofits that are more expensive than the original specification would have been. Reserve requirements also change in character, shifting from slow-responding capacity toward fast-responding services that storage is well placed to provide."
+  },
+  {
+    "doc_id": "solar-economics",
+    "title": "Levelised Cost Trends and Their Limits as a Decision Metric",
+    "url": "https://example.org/energy/lcoe",
+    "publisher": "Energy Economics Letters",
+    "published": "2025-05-18",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["cost", "economics", "lcoe", "statistics", "current state", "evidence"],
+    "content": "Levelised cost of energy has fallen substantially for utility-scale photovoltaics over the past decade and is now, in high-irradiance regions, among the lowest of any generation technology on a per-megawatt-hour basis. The metric is nevertheless a poor guide to system-level decisions because it prices energy without pricing timing, and a megawatt-hour delivered at noon in a solar-saturated market is worth less than one delivered at the evening peak. System-level cost metrics that include integration, curtailment and firming costs narrow the gap between technologies considerably. Analysts increasingly recommend evaluating additions against their marginal value to the specific system rather than against a technology-agnostic cost ranking. Capital cost declines have also been uneven across the supply chain, with module costs falling faster than the balance-of-system and interconnection costs that now dominate project budgets."
+  },
+  {
+    "doc_id": "solar-water",
+    "title": "Water Use, Land Use and Local Environmental Trade-offs",
+    "url": "https://example.org/energy/land-water",
+    "publisher": "Environmental Systems Review",
+    "published": "2025-02-27",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["environment", "water", "land use", "risks", "limitations", "criticism"],
+    "content": "Utility-scale solar has a low operational water footprint compared with thermal generation, but panel cleaning in arid regions reintroduces a water demand precisely where water is scarcest. Dry and robotic cleaning systems reduce this demand at the cost of additional capital and maintenance. Land use intensity per unit of energy is higher than for conventional generation, which raises siting questions where land has competing ecological or agricultural value; co-location approaches that combine generation with agriculture or grazing are an active area of practice. Criticism of large desert installations focuses on habitat fragmentation and on the local microclimate effects of large albedo changes, both of which remain less studied than the technology's carbon benefits. Decommissioning and module recycling capacity has not scaled at the same rate as deployment, which is a foreseeable future constraint rather than a current one."
+  },
+  {
+    "doc_id": "solar-outlook",
+    "title": "Outlook: From Deployment to Integration",
+    "url": "https://example.org/energy/outlook",
+    "publisher": "Technology Forecast Group",
+    "published": "2025-11-14",
+    "credibility": "medium",
+    "synthetic": true,
+    "tags": ["outlook", "future", "implications", "policy", "integration"],
+    "content": "The constraint on solar growth in most markets has shifted from cost and manufacturing capacity to interconnection queues, permitting timelines and transmission build-out, none of which respond to further reductions in module price. Forecasts converge on integration capability rather than generation capacity as the determinant of how much additional solar a given system can absorb over the next decade. Policy attention is correspondingly moving toward transmission planning, market design that rewards flexibility, and connection standards that require grid-forming capability by default. For system operators the practical implication is that procurement decisions increasingly need to specify capability, such as ramp rate and voltage support, rather than energy alone. For investors, the implication is that returns depend more on locational and temporal factors than on technology selection."
+  }
+]
