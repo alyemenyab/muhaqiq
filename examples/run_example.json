@@ -1,0 +1,592 @@
+{
+  "meta": {
+    "run_id": "run_example",
+    "created_at": "2026-08-13T07:04:22+00:00",
+    "llm_provider": "offline",
+    "search_provider": "offline",
+    "model": "offline-reasoner",
+    "duration_ms": 72,
+    "rounds_used": 1,
+    "tool_calls": 42,
+    "degraded": []
+  },
+  "brief": {
+    "question": "How do multi-agent orchestration patterns compare, and what are the main risks of deploying them?",
+    "topic": "multi agent orchestration patterns",
+    "audience": "a technical reader who is new to the topic",
+    "depth": "standard",
+    "language": "en",
+    "scope_in": [
+      "Material that directly addresses: How do multi-agent orchestration patterns compare, and what are the main risks of…"
+    ],
+    "scope_out": [
+      "Speculation not traceable to a retrieved source"
+    ],
+    "success_criteria": [
+      "Every substantive claim carries a [S#] citation",
+      "At least three distinct sources are used",
+      "Limitations and disagreements between sources are stated explicitly"
+    ]
+  },
+  "plan": {
+    "strategy": "Decompose 'multi agent orchestration patterns' into 5 orthogonal facets so that each can be researched independently and in parallel, then reconcile the findings into a single report. Facets are chosen to cover definition, evidence, alternatives, risk and outlook, which together answer the brief without overlapping.",
+    "subquestions": [
+      {
+        "id": "q1",
+        "question": "multi agent orchestration patterns — what is it, and how is it currently defined and bounded?",
+        "label": "Definition and scope",
+        "rationale": "Covers the 'definition and scope' facet of the brief.",
+        "search_queries": [
+          "multi agent orchestration patterns definition",
+          "multi agent orchestration patterns overview",
+          "multi agent orchestration patterns what is"
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "multi agent orchestration patterns — what is the current state, and what evidence or data supports it?",
+        "label": "Current state and evidence",
+        "rationale": "Covers the 'current state and evidence' facet of the brief.",
+        "search_queries": [
+          "multi agent orchestration patterns current state",
+          "multi agent orchestration patterns statistics",
+          "multi agent orchestration patterns evidence"
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "multi agent orchestration patterns — which approaches or methods dominate, and how do they compare?",
+        "label": "Approaches and trade-offs",
+        "rationale": "Covers the 'approaches and trade-offs' facet of the brief.",
+        "search_queries": [
+          "multi agent orchestration patterns approaches",
+          "multi agent orchestration patterns comparison",
+          "multi agent orchestration patterns trade-offs"
+        ]
+      },
+      {
+        "id": "q4",
+        "question": "multi agent orchestration patterns — what are the main risks, limitations, or criticisms?",
+        "label": "Risks and limitations",
+        "rationale": "Covers the 'risks and limitations' facet of the brief.",
+        "search_queries": [
+          "multi agent orchestration patterns risks",
+          "multi agent orchestration patterns limitations",
+          "multi agent orchestration patterns criticism"
+        ]
+      },
+      {
+        "id": "q5",
+        "question": "multi agent orchestration patterns — where is this heading, and what does that mean in practice?",
+        "label": "Outlook and implications",
+        "rationale": "Covers the 'outlook and implications' facet of the brief.",
+        "search_queries": [
+          "multi agent orchestration patterns outlook",
+          "multi agent orchestration patterns future",
+          "multi agent orchestration patterns implications"
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Orchestration Patterns for Multi-Agent Systems: Supervisors, Swarms and Pipelines",
+      "url": "https://example.org/agentic/orchestration",
+      "publisher": "Distributed Intelligence Quarterly",
+      "published": "2025-08-21",
+      "snippet": "Three orchestration patterns dominate current multi-agent practice. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace. In the pipeline pattern, agents are arranged in a fixed sequence where each stage transforms the output of the previous one, which…",
+      "relevance": 1.0,
+      "credibility": "high",
+      "retrieved_at": "2026-08-13T07:04:22+00:00",
+      "query": "multi agent orchestration patterns definition"
+    },
+    {
+      "id": "S2",
+      "title": "Cost and Latency Characteristics of Multi-Step Agent Runs",
+      "url": "https://example.org/agentic/cost",
+      "publisher": "Practical Platform Engineering",
+      "published": "2025-11-22",
+      "snippet": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history. Designs that summarise or prune history between steps, or that give each worker only the slice of context it needs, show markedly better cost scaling than designs that append indiscriminately. Latency is dominated by serialisation: a run with…",
+      "relevance": 0.911,
+      "credibility": "medium",
+      "retrieved_at": "2026-08-13T07:04:22+00:00",
+      "query": "multi agent orchestration patterns definition"
+    },
+    {
+      "id": "S3",
+      "title": "State, Memory and Checkpointing in Graph-Based Agent Frameworks",
+      "url": "https://example.org/agentic/state",
+      "publisher": "Journal of Applied Systems Engineering",
+      "published": "2025-08-04",
+      "snippet": "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state. This formulation makes two otherwise awkward things natural: cycles, which express retry and refinement loops, and parallel fan-out, which expresses independent sub-tasks. Because every node is a pure function of state to…",
+      "relevance": 0.9139,
+      "credibility": "high",
+      "retrieved_at": "2026-08-13T07:04:22+00:00",
+      "query": "multi agent orchestration patterns current state"
+    },
+    {
+      "id": "S4",
+      "title": "Human Oversight Models for Semi-Autonomous Systems",
+      "url": "https://example.org/agentic/oversight",
+      "publisher": "Governance and Automation Review",
+      "published": "2025-05-16",
+      "snippet": "Oversight models for semi-autonomous systems fall on a spectrum from human-in-the-loop, where every consequential action awaits approval, to human-on-the-loop, where the operator monitors and can intervene, to human-out-of-the-loop, where the system acts unsupervised within preset bounds. The appropriate position depends on the reversibility and blast radius of the actions available, not on the…",
+      "relevance": 0.8881,
+      "credibility": "medium",
+      "retrieved_at": "2026-08-13T07:04:22+00:00",
+      "query": "multi agent orchestration patterns evidence"
+    },
+    {
+      "id": "S5",
+      "title": "Risk Surface of Autonomous Agent Deployments",
+      "url": "https://example.org/agentic/risks",
+      "publisher": "Institute for Safe Automation",
+      "published": "2025-07-30",
+      "snippet": "The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access. Prompt injection is the most frequently cited unsolved problem: content retrieved from an untrusted source can carry instructions that the model treats as legitimate, and no purely prompt-level defence has…",
+      "relevance": 1.0,
+      "credibility": "high",
+      "retrieved_at": "2026-08-13T07:04:22+00:00",
+      "query": "multi agent orchestration patterns risks"
+    }
+  ],
+  "subanswers": [
+    {
+      "subquestion_id": "q1",
+      "answer": "Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].",
+      "evidence": [
+        {
+          "claim": "Three orchestration patterns dominate current multi-agent practice.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Three orchestration patterns dominate current multi-agent practice.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "source_ids": [
+            "S2"
+          ],
+          "quote": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "confidence": 0.67
+        },
+        {
+          "claim": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "confidence": 0.67
+        },
+        {
+          "claim": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "confidence": 0.65
+        },
+        {
+          "claim": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "confidence": 0.54
+        }
+      ],
+      "unresolved": [],
+      "rounds": 1
+    },
+    {
+      "subquestion_id": "q2",
+      "answer": "Three orchestration patterns dominate current multi-agent practice [S1]. Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log [S4]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds [S3].",
+      "evidence": [
+        {
+          "claim": "Three orchestration patterns dominate current multi-agent practice.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Three orchestration patterns dominate current multi-agent practice.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state.",
+          "source_ids": [
+            "S3"
+          ],
+          "quote": "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state.",
+          "confidence": 0.62
+        },
+        {
+          "claim": "Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log.",
+          "source_ids": [
+            "S4"
+          ],
+          "quote": "Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log.",
+          "confidence": 0.53
+        },
+        {
+          "claim": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "confidence": 0.63
+        },
+        {
+          "claim": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "confidence": 0.62
+        },
+        {
+          "claim": "Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds.",
+          "source_ids": [
+            "S3"
+          ],
+          "quote": "Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds.",
+          "confidence": 0.53
+        }
+      ],
+      "unresolved": [],
+      "rounds": 1
+    },
+    {
+      "subquestion_id": "q3",
+      "answer": "Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].",
+      "evidence": [
+        {
+          "claim": "Three orchestration patterns dominate current multi-agent practice.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Three orchestration patterns dominate current multi-agent practice.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "source_ids": [
+            "S2"
+          ],
+          "quote": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "confidence": 0.64
+        },
+        {
+          "claim": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "confidence": 0.64
+        },
+        {
+          "claim": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "confidence": 0.63
+        },
+        {
+          "claim": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "confidence": 0.53
+        }
+      ],
+      "unresolved": [],
+      "rounds": 1
+    },
+    {
+      "subquestion_id": "q4",
+      "answer": "Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].",
+      "evidence": [
+        {
+          "claim": "Three orchestration patterns dominate current multi-agent practice.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Three orchestration patterns dominate current multi-agent practice.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "source_ids": [
+            "S2"
+          ],
+          "quote": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "confidence": 0.65
+        },
+        {
+          "claim": "The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access.",
+          "source_ids": [
+            "S5"
+          ],
+          "quote": "The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access.",
+          "confidence": 0.55
+        },
+        {
+          "claim": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "confidence": 0.65
+        },
+        {
+          "claim": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "confidence": 0.64
+        },
+        {
+          "claim": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "confidence": 0.54
+        }
+      ],
+      "unresolved": [],
+      "rounds": 1
+    },
+    {
+      "subquestion_id": "q5",
+      "answer": "Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].",
+      "evidence": [
+        {
+          "claim": "Three orchestration patterns dominate current multi-agent practice.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Three orchestration patterns dominate current multi-agent practice.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "source_ids": [
+            "S2"
+          ],
+          "quote": "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history.",
+          "confidence": 0.65
+        },
+        {
+          "claim": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker.",
+          "confidence": 0.65
+        },
+        {
+          "claim": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised.",
+          "confidence": 0.64
+        },
+        {
+          "claim": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "source_ids": [
+            "S1"
+          ],
+          "quote": "In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace.",
+          "confidence": 0.54
+        }
+      ],
+      "unresolved": [],
+      "rounds": 1
+    }
+  ],
+  "gap_reports": [
+    {
+      "sufficient": true,
+      "gaps": [],
+      "followup_queries": {},
+      "notes": "Coverage is adequate across all facets."
+    }
+  ],
+  "report": {
+    "title": "How do multi-agent orchestration patterns compare, and what are the main risks of deploying them",
+    "executive_summary": "This report answers: How do multi-agent orchestration patterns compare, and what are the main risks of deploying them? Three orchestration patterns dominate current multi-agent practice [S1]. Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5].",
+    "key_findings": [
+      "Three orchestration patterns dominate current multi-agent practice [S1].",
+      "Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2].",
+      "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]."
+    ],
+    "sections": [
+      {
+        "heading": "Definition and scope",
+        "body": "Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1]."
+      },
+      {
+        "heading": "Current state and evidence",
+        "body": "Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log [S4]. Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds [S3]."
+      },
+      {
+        "heading": "Approaches and trade-offs",
+        "body": "This facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections."
+      },
+      {
+        "heading": "Risks and limitations",
+        "body": "The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5]."
+      },
+      {
+        "heading": "Outlook and implications",
+        "body": "This facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections."
+      }
+    ],
+    "open_questions": [
+      "Approaches and trade-offs: retrieval found no material specific to this facet.",
+      "Outlook and implications: retrieval found no material specific to this facet."
+    ]
+  },
+  "verification": {
+    "verdict": "pass",
+    "citation_coverage": 1.0,
+    "total_claims": 15,
+    "cited_claims": 15,
+    "uncited_claims": [],
+    "dangling_citations": [],
+    "unused_sources": [],
+    "source_diversity": 5,
+    "low_credibility_sources": [],
+    "notes": [
+      "All checks passed."
+    ]
+  },
+  "markdown": "# How do multi-agent orchestration patterns compare, and what are the main risks of deploying them\n\n> **✅ Passed the citation audit.** Citation coverage **100%** (15/15 claims cited) · **5** distinct sources cited · 1 critique round(s).\n>\n> ⚠️ **Provenance:** this run used the bundled *synthetic* demo corpus. The citations below are internally consistent but the documents are fictional. Configure a live search provider for real-world research.\n\n## Research question\n\nHow do multi-agent orchestration patterns compare, and what are the main risks of deploying them?\n\n## Executive summary\n\nThis report answers: How do multi-agent orchestration patterns compare, and what are the main risks of deploying them? Three orchestration patterns dominate current multi-agent practice [S1]. Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5].\n\n## Key findings\n\n- Three orchestration patterns dominate current multi-agent practice [S1].\n- Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2].\n- Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3].\n\n## Definition and scope\n\nThree orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].\n\n## Current state and evidence\n\nGraph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log [S4]. Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds [S3].\n\n## Approaches and trade-offs\n\nThis facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections.\n\n## Risks and limitations\n\nThe risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5].\n\n## Outlook and implications\n\nThis facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections.\n\n## Open questions\n\n- Approaches and trade-offs: retrieval found no material specific to this facet.\n- Outlook and implications: retrieval found no material specific to this facet.\n\n## Sources\n\n- **[S1]** Orchestration Patterns for Multi-Agent Systems: Supervisors, Swarms and Pipelines  \n  Distributed Intelligence Quarterly · 2025-08-21 · credibility: high  \n  <https://example.org/agentic/orchestration>\n- **[S2]** Cost and Latency Characteristics of Multi-Step Agent Runs  \n  Practical Platform Engineering · 2025-11-22 · credibility: medium  \n  <https://example.org/agentic/cost>\n- **[S3]** State, Memory and Checkpointing in Graph-Based Agent Frameworks  \n  Journal of Applied Systems Engineering · 2025-08-04 · credibility: high  \n  <https://example.org/agentic/state>\n- **[S4]** Human Oversight Models for Semi-Autonomous Systems  \n  Governance and Automation Review · 2025-05-16 · credibility: medium  \n  <https://example.org/agentic/oversight>\n- **[S5]** Risk Surface of Autonomous Agent Deployments  \n  Institute for Safe Automation · 2025-07-30 · credibility: high  \n  <https://example.org/agentic/risks>\n\n## Audit\n\n- **Verdict:** `pass`\n- **Citation coverage:** 100% (threshold 80%)\n- **Distinct sources cited:** 5\n- All checks passed.\n\n## How this report was produced\n\n**Plan.** Decompose 'multi agent orchestration patterns' into 5 orthogonal facets so that each can be researched independently and in parallel, then reconcile the findings into a single report. Facets are chosen to cover definition, evidence, alternatives, risk and outlook, which together answer the brief without overlapping.\n\n- `q1` — multi agent orchestration patterns — what is it, and how is it currently defined and bounded?\n- `q2` — multi agent orchestration patterns — what is the current state, and what evidence or data supports it?\n- `q3` — multi agent orchestration patterns — which approaches or methods dominate, and how do they compare?\n- `q4` — multi agent orchestration patterns — what are the main risks, limitations, or criticisms?\n- `q5` — multi agent orchestration patterns — where is this heading, and what does that mean in practice?\n\n**Critique round 1.** sufficient. Coverage is adequate across all facets.\n\n---\n\n_Generated by **Muhaqqiq** — AAASE capstone, SDAIA Academy._\n",
+  "events": [
+    {
+      "t_ms": 5,
+      "node": "start",
+      "message": "run run_example",
+      "question": "How do multi-agent orchestration patterns compare, and what are the main risks of deploying them?",
+      "depth": "standard"
+    },
+    {
+      "t_ms": 7,
+      "node": "brief",
+      "message": "normalised the question",
+      "topic": "multi agent orchestration patterns",
+      "depth": "standard"
+    },
+    {
+      "t_ms": 8,
+      "node": "plan",
+      "message": "decomposed into 5 sub-questions",
+      "subquestions": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ]
+    },
+    {
+      "t_ms": 9,
+      "node": "dispatch",
+      "message": "round 1: dispatching 5 researcher(s)",
+      "targets": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ]
+    },
+    {
+      "t_ms": 24,
+      "node": "researcher",
+      "message": "q1: 2 source(s), 5 evidence item(s)",
+      "subquestion": "q1",
+      "round": 1,
+      "sources": [
+        "S101",
+        "S102"
+      ]
+    },
+    {
+      "t_ms": 31,
+      "node": "researcher",
+      "message": "q5: 2 source(s), 5 evidence item(s)",
+      "subquestion": "q5",
+      "round": 1,
+      "sources": [
+        "S501",
+        "S502"
+      ]
+    },
+    {
+      "t_ms": 44,
+      "node": "researcher",
+      "message": "q4: 3 source(s), 6 evidence item(s)",
+      "subquestion": "q4",
+      "round": 1,
+      "sources": [
+        "S401",
+        "S402",
+        "S403"
+      ]
+    },
+    {
+      "t_ms": 59,
+      "node": "researcher",
+      "message": "q3: 2 source(s), 5 evidence item(s)",
+      "subquestion": "q3",
+      "round": 1,
+      "sources": [
+        "S301",
+        "S302"
+      ]
+    },
+    {
+      "t_ms": 68,
+      "node": "researcher",
+      "message": "q2: 3 source(s), 6 evidence item(s)",
+      "subquestion": "q2",
+      "round": 1,
+      "sources": [
+        "S201",
+        "S202",
+        "S203"
+      ]
+    },
+    {
+      "t_ms": 69,
+      "node": "critique",
+      "message": "coverage sufficient",
+      "round": 1,
+      "gaps": 0,
+      "will_retry": false
+    },
+    {
+      "t_ms": 70,
+      "node": "synthesize",
+      "message": "wrote 5 section(s) from 5 source(s)",
+      "renumbered": 5
+    },
+    {
+      "t_ms": 71,
+      "node": "verify",
+      "message": "verdict=pass coverage=100%",
+      "diversity": 5,
+      "dangling": 0
+    },
+    {
+      "t_ms": 72,
+      "node": "render",
+      "message": "rendered 5860 characters of markdown"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "t_ms": 5,
+    "node": "start",
+    "message": "run run_example",
+    "question": "How do multi-agent orchestration patterns compare, and what are the main risks of deploying them?",
+    "depth": "standard"
+  },
+  {
+    "t_ms": 7,
+    "node": "brief",
+    "message": "normalised the question",
+    "topic": "multi agent orchestration patterns",
+    "depth": "standard"
+  },
+  {
+    "t_ms": 8,
+    "node": "plan",
+    "message": "decomposed into 5 sub-questions",
+    "subquestions": [
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5"
+    ]
+  },
+  {
+    "t_ms": 9,
+    "node": "dispatch",
+    "message": "round 1: dispatching 5 researcher(s)",
+    "targets": [
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5"
+    ]
+  },
+  {
+    "t_ms": 24,
+    "node": "researcher",
+    "message": "q1: 2 source(s), 5 evidence item(s)",
+    "subquestion": "q1",
+    "round": 1,
+    "sources": [
+      "S101",
+      "S102"
+    ]
+  },
+  {
+    "t_ms": 31,
+    "node": "researcher",
+    "message": "q5: 2 source(s), 5 evidence item(s)",
+    "subquestion": "q5",
+    "round": 1,
+    "sources": [
+      "S501",
+      "S502"
+    ]
+  },
+  {
+    "t_ms": 44,
+    "node": "researcher",
+    "message": "q4: 3 source(s), 6 evidence item(s)",
+    "subquestion": "q4",
+    "round": 1,
+    "sources": [
+      "S401",
+      "S402",
+      "S403"
+    ]
+  },
+  {
+    "t_ms": 59,
+    "node": "researcher",
+    "message": "q3: 2 source(s), 5 evidence item(s)",
+    "subquestion": "q3",
+    "round": 1,
+    "sources": [
+      "S301",
+      "S302"
+    ]
+  },
+  {
+    "t_ms": 68,
+    "node": "researcher",
+    "message": "q2: 3 source(s), 6 evidence item(s)",
+    "subquestion": "q2",
+    "round": 1,
+    "sources": [
+      "S201",
+      "S202",
+      "S203"
+    ]
+  },
+  {
+    "t_ms": 69,
+    "node": "critique",
+    "message": "coverage sufficient",
+    "round": 1,
+    "gaps": 0,
+    "will_retry": false
+  },
+  {
+    "t_ms": 70,
+    "node": "synthesize",
+    "message": "wrote 5 section(s) from 5 source(s)",
+    "renumbered": 5
+  },
+  {
+    "t_ms": 71,
+    "node": "verify",
+    "message": "verdict=pass coverage=100%",
+    "diversity": 5,
+    "dangling": 0
+  },
+  {
+    "t_ms": 72,
+    "node": "render",
+    "message": "rendered 5860 characters of markdown"
+  }
+]

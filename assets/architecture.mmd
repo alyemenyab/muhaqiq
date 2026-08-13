@@ -1,0 +1,17 @@
+%% Muhaqqiq — agent graph. Kept in sync with `muhaqqiq graph`, which prints this
+%% same diagram from the compiled LangGraph object.
+flowchart TD
+    START([user question]) --> BRIEF[brief<br/>normalise + scope]
+    BRIEF --> PLAN[plan<br/>decompose into sub-questions]
+    PLAN --> DISPATCH{dispatch<br/>fan out}
+    DISPATCH -->|Send q1| R1[researcher q1]
+    DISPATCH -->|Send q2| R2[researcher q2]
+    DISPATCH -->|Send qN| R3[researcher qN]
+    R1 --> CRIT[critique<br/>gap analysis]
+    R2 --> CRIT
+    R3 --> CRIT
+    CRIT -->|gaps and rounds left| DISPATCH
+    CRIT -->|sufficient| SYN[synthesize<br/>renumber + write]
+    SYN --> VER[verify<br/>citation audit]
+    VER --> REN[render<br/>markdown + HTML]
+    REN --> DONE([cited report])

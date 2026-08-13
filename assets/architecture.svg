@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 730" width="980" height="730" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7b8595"/>
+    </marker>
+    <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c2703a"/>
+    </marker>
+    <style>
+      .lbl   { font-size: 13px; fill: #1d2029; }
+      .lblb  { font-size: 13px; fill: #1d2029; font-weight: 600; }
+      .sub   { font-size: 11px; fill: #6b7280; }
+      .acc   { font-size: 11px; fill: #c2703a; }
+      .grp   { font-size: 11.5px; fill: #8a93a2; font-weight: 600; letter-spacing: .08em; }
+      .edge  { stroke: #7b8595; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+      .edgea { stroke: #c2703a; stroke-width: 1.5; fill: none; marker-end: url(#arrowAccent); stroke-dasharray: 5 3; }
+      .dot   { stroke: #b9c0cb; stroke-width: 1.2; fill: none; stroke-dasharray: 3 3; }
+      .box   { fill: #ffffff; stroke: #d6dae1; stroke-width: 1.2; rx: 8; }
+      .boxa  { fill: #f2f7f4; stroke: #9dbfa9; stroke-width: 1.4; rx: 8; }
+      .boxg  { fill: #fbfbfa; stroke: #e2e5ea; stroke-width: 1.2; rx: 12; }
+      .boxw  { fill: #fdf7f1; stroke: #e3c4a5; stroke-width: 1.2; rx: 8; }
+    </style>
+  </defs>
+
+  <rect width="980" height="730" fill="#ffffff"/>
+
+  <!-- ============ entry points ============ -->
+  <text class="grp" x="40" y="34">ENTRY POINTS</text>
+  <rect class="box" x="40" y="46" width="256" height="52"/>
+  <text class="lblb" x="58" y="68">CLI</text>
+  <text class="sub"  x="58" y="86">muhaqqiq research "…"</text>
+
+  <rect class="box" x="316" y="46" width="284" height="52"/>
+  <text class="lblb" x="334" y="68">FastAPI</text>
+  <text class="sub"  x="334" y="86">/v1/responses (OpenResponses) · /v1/research</text>
+
+  <path class="edge" d="M168 98 L168 126"/>
+  <path class="edge" d="M458 98 L458 126"/>
+
+  <!-- ============ graph ============ -->
+  <text class="grp" x="40" y="146">LANGGRAPH · A STATE MACHINE OVER ONE TYPED ResearchState</text>
+  <rect class="boxg" x="40" y="158" width="676" height="330"/>
+
+  <rect class="box" x="64" y="186" width="140" height="52"/>
+  <text class="lblb" x="78" y="208">brief</text>
+  <text class="sub"  x="78" y="225">scope the question</text>
+
+  <rect class="box" x="230" y="186" width="140" height="52"/>
+  <text class="lblb" x="244" y="208">plan</text>
+  <text class="sub"  x="244" y="225">n sub-questions</text>
+
+  <rect class="boxa" x="396" y="186" width="152" height="52"/>
+  <text class="lblb" x="410" y="208">dispatch</text>
+  <text class="sub"  x="410" y="225">fan out — Send × n</text>
+
+  <path class="edge" d="M204 212 L226 212"/>
+  <path class="edge" d="M370 212 L392 212"/>
+
+  <!-- researchers -->
+  <rect class="boxa" x="396" y="292" width="152" height="34"/>
+  <text class="lbl"  x="410" y="314">researcher q1</text>
+  <rect class="boxa" x="396" y="334" width="152" height="34"/>
+  <text class="lbl"  x="410" y="356">researcher q2</text>
+  <rect class="boxa" x="396" y="376" width="152" height="34"/>
+  <text class="lbl"  x="410" y="398">researcher qN</text>
+
+  <text class="sub"  x="566" y="316">run in parallel;</text>
+  <text class="sub"  x="566" y="332">each worker sees</text>
+  <text class="sub"  x="566" y="348">only its own</text>
+  <text class="sub"  x="566" y="364">sub-question and</text>
+  <text class="sub"  x="566" y="380">its own sources</text>
+
+  <path class="edge" d="M472 238 L472 288"/>
+  <path class="dot"  d="M472 326 L472 334"/>
+  <path class="dot"  d="M472 368 L472 376"/>
+
+  <rect class="box" x="230" y="376" width="140" height="52"/>
+  <text class="lblb" x="244" y="398">critique</text>
+  <text class="sub"  x="244" y="415">gap analysis</text>
+  <path class="edge" d="M392 402 L374 402"/>
+
+  <!-- bounded retry -->
+  <path class="edgea" d="M300 376 L300 262 L440 262 L440 242"/>
+  <text class="acc" x="126" y="266">gaps &amp; rounds left</text>
+
+  <rect class="box" x="64" y="376" width="140" height="52"/>
+  <text class="lblb" x="78" y="398">synthesize</text>
+  <text class="sub"  x="78" y="415">renumber + write</text>
+  <path class="edge" d="M226 402 L208 402"/>
+  <text class="sub" x="206" y="448">sufficient</text>
+
+  <!-- ============ gate ============ -->
+  <text class="grp" x="756" y="146">THE GATE</text>
+  <rect class="boxw" x="756" y="158" width="188" height="102"/>
+  <text class="lblb" x="772" y="182">verify</text>
+  <text class="sub"  x="772" y="201">coverage ≥ threshold</text>
+  <text class="sub"  x="772" y="217">no dangling citation</text>
+  <text class="sub"  x="772" y="233">≥ 3 distinct sources</text>
+  <text class="sub"  x="772" y="249">plain Python, no LLM</text>
+
+  <rect class="box" x="756" y="286" width="188" height="52"/>
+  <text class="lblb" x="772" y="308">render</text>
+  <text class="sub"  x="772" y="325">markdown · HTML · JSON</text>
+
+  <path class="edge" d="M64 402 L52 402 L52 172 L700 172 L700 200 L752 200"/>
+  <path class="edge" d="M850 260 L850 282"/>
+  <path class="edge" d="M850 338 L850 374"/>
+
+  <rect class="boxw" x="756" y="378" width="188" height="58"/>
+  <text class="lblb" x="772" y="401">Cited report</text>
+  <text class="sub"  x="772" y="419">+ audit verdict + trace</text>
+
+  <!-- ============ tools ============ -->
+  <text class="grp" x="40" y="534">TOOL LAYER · ONE DEFINITION, TWO TRANSPORTS</text>
+  <rect class="boxg" x="40" y="546" width="560" height="106"/>
+  <rect class="box" x="60" y="570" width="122" height="46"/>
+  <text class="lbl"  x="72" y="598">web_search</text>
+  <rect class="box" x="194" y="570" width="140" height="46"/>
+  <text class="lbl"  x="206" y="598">fetch_document</text>
+  <rect class="box" x="346" y="570" width="104" height="46"/>
+  <text class="lbl"  x="358" y="598">fetch_url</text>
+  <rect class="box" x="462" y="570" width="118" height="46"/>
+  <text class="lbl"  x="474" y="598">corpus_stats</text>
+  <text class="sub"  x="60" y="638">in-process for the agent · served over MCP (FastMCP) for any other client</text>
+
+  <path class="edge" d="M472 410 L472 512 L560 512 L560 542"/>
+
+  <!-- ============ providers ============ -->
+  <text class="grp" x="620" y="534">PLUGGABLE BACKENDS</text>
+  <rect class="box" x="620" y="546" width="164" height="46"/>
+  <text class="lbl"  x="634" y="574">offline ⇄ OpenRouter</text>
+  <rect class="box" x="620" y="606" width="164" height="46"/>
+  <text class="lbl"  x="634" y="634">corpus ⇄ Tavily</text>
+
+  <rect class="box" x="800" y="546" width="144" height="46"/>
+  <text class="lbl"  x="814" y="574">SQLite runs</text>
+  <rect class="box" x="800" y="606" width="144" height="46"/>
+  <text class="lbl"  x="814" y="634">LangSmith (opt.)</text>
+
+  <path class="dot" d="M616 569 L604 569"/>
+  <path class="dot" d="M616 629 L604 629"/>
+
+  <!-- ============ skills ============ -->
+  <text class="grp" x="40" y="686">AGENT SKILLS · METHODOLOGY AS REVIEWABLE TEXT, LOADED FROM DISK AT RUNTIME</text>
+  <rect class="boxw" x="40" y="696" width="904" height="26"/>
+  <text class="sub" x="56" y="713">research-planning → brief, plan   ·   source-triage → research, critique   ·   report-writing → synthesize   ·   citation-audit → verify</text>
+</svg>

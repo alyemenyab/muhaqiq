@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do multi-agent orchestration patterns compare, and what are the main risks of deploying them</title>
+<style>
+  :root { color-scheme: light dark; --fg:#16181d; --bg:#fbfbfa; --muted:#5f6672;
+           --rule:#e3e4e8; --accent:#2f6f4f; --code:#f2f2f0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e6e7ea; --bg:#15171b; --muted:#9aa1ad; --rule:#2a2d34;
+             --accent:#7fc9a0; --code:#1e2127; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+          font:16px/1.65 ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height:1.25; margin: 0 0 1rem; letter-spacing:-.01em; }
+  h2 { font-size: 1.15rem; margin: 2.4rem 0 .6rem; padding-bottom:.35rem;
+        border-bottom:1px solid var(--rule); }
+  blockquote { margin:1.5rem 0; padding:.9rem 1.1rem; border-left:3px solid var(--accent);
+                background:var(--code); border-radius:0 6px 6px 0; color:var(--muted); }
+  blockquote strong { color:var(--fg); }
+  code { background:var(--code); padding:.12em .38em; border-radius:4px; font-size:.88em; }
+  a { color:var(--accent); }
+  li { margin:.35rem 0; }
+  details { margin:1rem 0; }
+  summary { cursor:pointer; color:var(--muted); }
+  hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0 1.5rem; }
+  em { color:var(--muted); }
+</style>
+</head>
+<body><main>
+<h1>How do multi-agent orchestration patterns compare, and what are the main risks of deploying them</h1>
+<blockquote>
+<p><strong>✅ Passed the citation audit.</strong> Citation coverage <strong>100%</strong> (15/15 claims cited) · <strong>5</strong> distinct sources cited · 1 critique round(s).</p>
+<p>⚠️ <strong>Provenance:</strong> this run used the bundled <em>synthetic</em> demo corpus. The citations below are internally consistent but the documents are fictional. Configure a live search provider for real-world research.</p>
+</blockquote>
+<h2>Research question</h2>
+<p>How do multi-agent orchestration patterns compare, and what are the main risks of deploying them?</p>
+<h2>Executive summary</h2>
+<p>This report answers: How do multi-agent orchestration patterns compare, and what are the main risks of deploying them? Three orchestration patterns dominate current multi-agent practice [S1]. Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5].</p>
+<h2>Key findings</h2>
+<ul>
+<li>Three orchestration patterns dominate current multi-agent practice [S1].</li>
+<li>Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2].</li>
+<li>Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3].</li>
+</ul>
+<h2>Definition and scope</h2>
+<p>Three orchestration patterns dominate current multi-agent practice [S1]. Cost in a multi-step agent run is dominated not by the number of steps but by context growth, because each step typically resends an accumulating history [S2]. The main cost of multi-agent designs is context duplication: each worker must be given enough shared context to act sensibly, and that context is paid for once per worker [S1]. Parallel fan-out of independent sub-tasks is the main source of latency improvement in multi-agent designs, since sub-tasks that do not depend on each other need not be serialised [S1]. In the supervisor pattern, a coordinating agent decomposes a task, dispatches sub-tasks to specialised workers, and reconciles their outputs; control flow is centralised and therefore easy to trace [S1].</p>
+<h2>Current state and evidence</h2>
+<p>Graph-based agent frameworks model an agent as a directed graph whose nodes are functions over a shared, typed state object and whose edges may be conditional on that state [S3]. Governance frameworks increasingly require that the artefact itself carry evidence of how it was produced, which favours designs that emit an audit trail as a first-class output rather than as a log [S4]. Because every node is a pure function of state to state-update, a run can be checkpointed after each node and resumed, which matters for workloads measured in minutes rather than milliseconds [S3].</p>
+<h2>Approaches and trade-offs</h2>
+<p>This facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections.</p>
+<h2>Risks and limitations</h2>
+<p>The risk surface of an agent is the union of the risk surfaces of every tool it can call, which means that granting an agent broad tool access is equivalent to granting it broad system access [S5].</p>
+<h2>Outlook and implications</h2>
+<p>This facet returned no evidence beyond what is already cited above; the retrieved sources overlap with the preceding sections.</p>
+<h2>Open questions</h2>
+<ul>
+<li>Approaches and trade-offs: retrieval found no material specific to this facet.</li>
+<li>Outlook and implications: retrieval found no material specific to this facet.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><strong>[S1]</strong> Orchestration Patterns for Multi-Agent Systems: Supervisors, Swarms and Pipelines<br />
+Distributed Intelligence Quarterly · 2025-08-21 · credibility: high<br />
+<a href="https://example.org/agentic/orchestration">https://example.org/agentic/orchestration</a></li>
+<li><strong>[S2]</strong> Cost and Latency Characteristics of Multi-Step Agent Runs<br />
+Practical Platform Engineering · 2025-11-22 · credibility: medium<br />
+<a href="https://example.org/agentic/cost">https://example.org/agentic/cost</a></li>
+<li><strong>[S3]</strong> State, Memory and Checkpointing in Graph-Based Agent Frameworks<br />
+Journal of Applied Systems Engineering · 2025-08-04 · credibility: high<br />
+<a href="https://example.org/agentic/state">https://example.org/agentic/state</a></li>
+<li><strong>[S4]</strong> Human Oversight Models for Semi-Autonomous Systems<br />
+Governance and Automation Review · 2025-05-16 · credibility: medium<br />
+<a href="https://example.org/agentic/oversight">https://example.org/agentic/oversight</a></li>
+<li><strong>[S5]</strong> Risk Surface of Autonomous Agent Deployments<br />
+Institute for Safe Automation · 2025-07-30 · credibility: high<br />
+<a href="https://example.org/agentic/risks">https://example.org/agentic/risks</a></li>
+</ul>
+<h2>Audit</h2>
+<ul>
+<li><strong>Verdict:</strong> <code>pass</code></li>
+<li><strong>Citation coverage:</strong> 100% (threshold 80%)</li>
+<li><strong>Distinct sources cited:</strong> 5</li>
+<li>All checks passed.</li>
+</ul>
+<h2>How this report was produced</h2>
+<p><strong>Plan.</strong> Decompose 'multi agent orchestration patterns' into 5 orthogonal facets so that each can be researched independently and in parallel, then reconcile the findings into a single report. Facets are chosen to cover definition, evidence, alternatives, risk and outlook, which together answer the brief without overlapping.</p>
+<ul>
+<li><code>q1</code> — multi agent orchestration patterns — what is it, and how is it currently defined and bounded?</li>
+<li><code>q2</code> — multi agent orchestration patterns — what is the current state, and what evidence or data supports it?</li>
+<li><code>q3</code> — multi agent orchestration patterns — which approaches or methods dominate, and how do they compare?</li>
+<li><code>q4</code> — multi agent orchestration patterns — what are the main risks, limitations, or criticisms?</li>
+<li><code>q5</code> — multi agent orchestration patterns — where is this heading, and what does that mean in practice?</li>
+</ul>
+<p><strong>Critique round 1.</strong> sufficient. Coverage is adequate across all facets.</p>
+<hr />
+<p><em>Generated by <strong>Muhaqqiq</strong> — AAASE capstone, SDAIA Academy.</em></p>
+
+</main></body>
+</html>
