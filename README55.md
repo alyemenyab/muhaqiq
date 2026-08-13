@@ -622,11 +622,11 @@ understanding the system.
 
 | Member | GitHub | Contribution |
 |---|---|---|
-| Abdullah Al-Yamani (عبدالله اليمني) | `@your-handle` | Agent architecture, graph design, documentation |
-| Abdullah Al-Qahtani (عبدالله القحطاني) | `@your-handle` | Tool layer, MCP integration |
-| Faisal bin Baz (فيصل بن باز) | `@your-handle` | API and deployment |
-| Saud Al-Mubarak (سعود آل مبارك) | `@your-handle` | Agent Skills, offline reasoner |
-| Yazid bin Thunayan (يزيد بن ثنيان) | `@your-handle` | Testing and evaluation |
+| Abdullah Al-yemni (عبدالله اليمني) | Agent architecture, graph design, documentation |
+| Abdullah Al-Qahtani (عبدالله القحطاني) | Tool layer, MCP integration |
+| Faisal bin Baz (فيصل بن باز)| API and deployment |
+| Saud Al-Mubarak (سعود آل مبارك) | Agent Skills, offline reasoner |
+| Yazeed bin Thnayan (يزيد بن ثنيان) | Testing and evaluation |
 
 ### Capstone checklist
 
