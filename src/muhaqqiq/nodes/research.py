@@ -32,10 +32,11 @@ def researcher_node(state: ResearchState, deps: Any) -> dict[str, Any]:
     limit = deps.settings.max_sources_per_subquestion
     tool_calls_before = getattr(deps.tools, "calls", 0)
 
+    topic = (payload.get("brief") or {}).get("topic", "")
     hits: list[dict[str, Any]] = []
     seen: set[str] = set()
     for query in queries[:3]:
-        for doc in deps.tools.web_search(query, limit=limit):
+        for doc in deps.tools.web_search(query, limit=limit, context=topic):
             key = doc.get("url") or doc.get("doc_id") or doc.get("title", "")
             if key and key in seen:
                 continue

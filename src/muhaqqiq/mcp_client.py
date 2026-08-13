@@ -46,8 +46,8 @@ class MCPToolRegistry:
         self.call_log.append({"tool": name, "transport": "mcp", **arguments})
         return asyncio.run(run())
 
-    def web_search(self, query: str, limit: int = 5) -> list[dict[str, Any]]:
-        result = self._call("web_search", {"query": query, "limit": limit})
+    def web_search(self, query: str, limit: int = 5, context: str = "") -> list[dict[str, Any]]:
+        result = self._call("web_search", {"query": query, "limit": limit, "context": context})
         return result if isinstance(result, list) else []
 
     def fetch_document(self, doc_id: str) -> dict[str, Any] | None:

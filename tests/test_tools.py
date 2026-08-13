@@ -25,6 +25,36 @@ def test_ranking_puts_the_on_topic_document_first(corpus_dir):
     assert hits[0].doc_id == "agent-risks"
 
 
+def test_topic_context_excludes_documents_from_another_domain(corpus_dir):
+    """The regression this whole mechanism exists for.
+
+    'outlook' is a rare word, so IDF gives it huge weight, and there is an
+    unrelated energy paper with 'Outlook' in its title. Without the topic
+    context that paper wins a search about agent engineering.
+    """
+    index = CorpusIndex(corpus_dir)
+
+    unfiltered = index.search("agentic AI outlook future", limit=3)
+    filtered = index.search("agentic AI outlook future", limit=3, context="agentic AI systems")
+
+    assert any(h.doc_id.startswith("solar") for h in unfiltered)
+    assert not any(h.doc_id.startswith("solar") for h in filtered)
+
+
+def test_topic_context_survives_morphology(corpus_dir):
+    """The user says 'agentic'; the corpus mostly says 'agent'."""
+    index = CorpusIndex(corpus_dir)
+    eligible = index._eligible("AI system agentic")
+    assert len(eligible) > 5
+    assert not any(doc.doc_id.startswith("solar") for doc in eligible)
+
+
+def test_ubiquitous_topic_words_do_not_make_everything_eligible(corpus_dir):
+    """'system' appears in most documents, so it must not confer eligibility."""
+    index = CorpusIndex(corpus_dir)
+    assert len(index._eligible("system")) == len(index.documents)
+
+
 def test_registry_counts_and_logs_tool_calls():
     registry = ToolRegistry(settings=get_settings(), store=RunStore(":memory:"))
     registry.web_search("agent evaluation metrics", limit=2)

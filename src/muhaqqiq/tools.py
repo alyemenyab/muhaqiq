@@ -28,7 +28,7 @@ import httpx
 from .config import Settings, get_settings
 from .offline import score_credibility
 from .store import RunStore
-from .textkit import STOPWORDS, stem, tokenize, truncate
+from .textkit import STOPWORDS, root, stem, tokenize, truncate
 
 log = logging.getLogger("muhaqqiq.tools")
 
@@ -89,17 +89,22 @@ class CorpusIndex:
     Inverse document frequency matters more here than the ranking function does.
     Without it, a query like "AI system agentic risks" is dominated by "system",
     a word that appears in every document in the corpus and therefore
-    discriminates between none of them.
+    discriminates between none of them — which is how a report on agent safety
+    ends up citing a paper about solar inverters. Weighting each term by how rare
+    it is fixes the ranking at its source, rather than patching it downstream.
     """
 
     K1 = 1.5
     B = 0.75
+    DOC_FREQ_CEILING = 0.7  # a topic word in >70% of the corpus identifies nothing
 
     def __init__(self, corpus_dir: Path | str) -> None:
         self.corpus_dir = Path(corpus_dir)
         self.documents: list[Document] = []
         self._df: Counter[str] = Counter()
+        self._root_df: Counter[str] = Counter()
         self._doc_terms: dict[str, Counter[str]] = {}
+        self._doc_roots: dict[str, set[str]] = {}
         self._doc_len: dict[str, int] = {}
         self._avg_len: float = 1.0
         self._load()
@@ -134,16 +139,20 @@ class CorpusIndex:
         for doc in self.documents:
             tokens = tokenize(f"{doc.title} {doc.publisher} {doc.content}")
             terms = Counter(stem(t) for t in tokens)
+            roots = {root(t) for t in tokens}
             self._doc_terms[doc.doc_id] = terms
+            self._doc_roots[doc.doc_id] = roots
             self._doc_len[doc.doc_id] = sum(terms.values())
             for term in terms:
                 self._df[term] += 1
+            for r in roots:
+                self._root_df[r] += 1
         if self._doc_len:
             self._avg_len = sum(self._doc_len.values()) / len(self._doc_len)
 
-    def _idf(self, term: str) -> float:
+    def _idf(self, term: str, counts: Counter[str] | None = None) -> float:
         n = len(self.documents)
-        df = self._df.get(term, 0)
+        df = (counts if counts is not None else self._df).get(term, 0)
         if n == 0 or df == 0:
             return 0.0
         # Robertson/Sparck-Jones IDF, floored at zero so a term present in every
@@ -170,9 +179,52 @@ class CorpusIndex:
             total += idf * norm * weight
         return total / len(set(terms))
 
-    def search(self, query: str, limit: int = 5) -> list[Document]:
+    def _eligible(self, context: str) -> list[Document]:
+        """Documents that mention at least one *discriminative* topic term.
+
+        A topic phrase mixes words that identify it ("agentic", "AI") with words
+        that do not ("system", in a corpus of systems papers). A word appearing
+        in most of the corpus identifies nothing and is dropped; a document
+        matching none of the words that remain is not about this topic, however
+        well it scores on a rare facet word like "outlook".
+
+        Matching is on `root`, not `stem`, because the corpus says "agent" where
+        the user says "agentic", and a filter that misses that connection
+        excludes the entire corpus.
+        """
+        n = len(self.documents)
+        if not n:
+            return self.documents
+        ceiling = self.DOC_FREQ_CEILING * n
+        terms = {
+            root(t)
+            for t in tokenize(context)
+            if t not in STOPWORDS and 0 < self._root_df.get(root(t), 0) <= ceiling
+        }
+        if not terms:
+            return self.documents
+        eligible = [
+            doc for doc in self.documents if terms & self._doc_roots.get(doc.doc_id, set())
+        ]
+        return eligible or self.documents
+
+    def search(self, query: str, limit: int = 5, context: str = "") -> list[Document]:
+        """Rank documents for `query`, optionally biased toward a topic `context`.
+
+        The sub-questions all search the same subject with different facet words
+        appended ("… risks", "… outlook"). Those facet words are rare, so IDF
+        gives them enormous weight, and a document from an unrelated domain whose
+        title happens to contain one wins the ranking outright.
+
+        The fix is to let the topic decide *eligibility* and the query decide
+        *order*, rather than blending the two into one number. A document must be
+        recognisably about the topic to be considered at all; among those that
+        are, the facet word is what sorts them.
+        """
+        candidates = self._eligible(context) if context else self.documents
+
         scored: list[Document] = []
-        for doc in self.documents:
+        for doc in candidates:
             value = self.score(query, doc)
             if value <= 0:
                 continue
@@ -246,32 +298,37 @@ class ToolRegistry:
             self.corpus = CorpusIndex(self.settings.corpus_dir)
 
     # -- tool 1 ------------------------------------------------------------ #
-    def web_search(self, query: str, limit: int = 5) -> list[dict[str, Any]]:
-        """Search for documents relevant to `query`.
+    def web_search(self, query: str, limit: int = 5, context: str = "") -> list[dict[str, Any]]:
+        """Search for documents relevant to `query`, within the topic `context`.
 
         Uses Tavily when a key is configured, otherwise the bundled local corpus.
         Results are cached so repeated queries inside a run are free.
         """
         provider = self.settings.effective_search_provider
         self.calls += 1
-        cached = self.store.cache_get(query, provider) if self.store else None
+        cache_key = f"{context}||{query}" if context else query
+        cached = self.store.cache_get(cache_key, provider) if self.store else None
         if cached is not None:
             self.call_log.append({"tool": "web_search", "query": query, "cached": True})
             return cached[:limit]
 
         if provider == "tavily" and self.settings.tavily_api_key:
             try:
-                docs = tavily_search(query, self.settings.tavily_api_key, limit=limit)
+                # A live engine has no `context` parameter; folding the topic into
+                # the query text is the closest equivalent.
+                docs = tavily_search(
+                    f"{context} {query}".strip(), self.settings.tavily_api_key, limit=limit
+                )
             except (httpx.HTTPError, ValueError) as exc:
                 log.warning("tavily search failed (%s); falling back to corpus", exc)
-                docs = self.corpus.search(query, limit=limit) if self.corpus else []
+                docs = self.corpus.search(query, limit=limit, context=context) if self.corpus else []
                 provider = "offline"
         else:
-            docs = self.corpus.search(query, limit=limit) if self.corpus else []
+            docs = self.corpus.search(query, limit=limit, context=context) if self.corpus else []
 
         payload = [d.to_dict() for d in docs]
         if self.store:
-            self.store.cache_put(query, provider, payload)
+            self.store.cache_put(cache_key, provider, payload)
         self.call_log.append(
             {"tool": "web_search", "query": query, "provider": provider, "hits": len(payload)}
         )

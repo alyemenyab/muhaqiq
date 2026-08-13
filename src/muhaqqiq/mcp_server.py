@@ -41,14 +41,17 @@ _registry = ToolRegistry(settings=_settings, store=RunStore(_settings.db_path))
 
 
 @mcp.tool
-def web_search(query: str, limit: int = 5) -> list[dict[str, Any]]:
+def web_search(query: str, limit: int = 5, context: str = "") -> list[dict[str, Any]]:
     """Search for documents relevant to a query.
 
     Args:
         query: Keyword-style search query. Named entities work better than sentences.
         limit: Maximum number of documents to return (1-15).
+        context: The overall topic of the research. Results are biased toward it,
+            which stops a rare facet word ("outlook", "risks") from pulling in
+            documents from an unrelated domain.
     """
-    return _registry.web_search(query, limit=max(1, min(limit, 15)))
+    return _registry.web_search(query, limit=max(1, min(limit, 15)), context=context)
 
 
 @mcp.tool
