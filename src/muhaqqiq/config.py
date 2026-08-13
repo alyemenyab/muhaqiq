@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     openrouter_base_url: str = Field(
         "https://openrouter.ai/api/v1", alias="MUHAQQIQ_OPENROUTER_BASE_URL"
     )
-    model: str = Field("anthropic/claude-sonnet-4.5", alias="MUHAQQIQ_MODEL")
+    model: str = Field("openai/gpt-4o", alias="MUHAQQIQ_MODEL")
     fast_model: str = Field("openai/gpt-4o-mini", alias="MUHAQQIQ_FAST_MODEL")
     temperature: float = Field(0.2, alias="MUHAQQIQ_TEMPERATURE")
     request_timeout: float = Field(90.0, alias="MUHAQQIQ_REQUEST_TIMEOUT")

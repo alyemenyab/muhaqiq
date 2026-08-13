@@ -31,7 +31,7 @@ services:
     environment:
       MUHAQQIQ_LLM_PROVIDER: ${MUHAQQIQ_LLM_PROVIDER:-offline}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
-      MUHAQQIQ_MODEL: ${MUHAQQIQ_MODEL:-anthropic/claude-sonnet-4.5}
+      MUHAQQIQ_MODEL: ${MUHAQQIQ_MODEL:-openai/gpt-4o}
       MUHAQQIQ_SEARCH_PROVIDER: ${MUHAQQIQ_SEARCH_PROVIDER:-offline}
       TAVILY_API_KEY: ${TAVILY_API_KEY:-}
       MUHAQQIQ_USE_MCP: "true"

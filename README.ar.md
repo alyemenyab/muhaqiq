@@ -261,7 +261,7 @@ uv run pytest -q          # ٨٣ اختباراً، لا تحتاج شبكة
 |---|---|---|
 | `MUHAQQIQ_LLM_PROVIDER` | `offline` | `offline` أو `openrouter` |
 | `OPENROUTER_API_KEY` | — | يُفعّل النماذج المستضافة |
-| `MUHAQQIQ_MODEL` | `anthropic/claude-sonnet-4.5` | نموذج مراحل الكتابة |
+| `MUHAQQIQ_MODEL` | `openai/gpt-4o` | نموذج مراحل الكتابة |
 | `MUHAQQIQ_SEARCH_PROVIDER` | `offline` | `offline` أو `tavily` |
 | `TAVILY_API_KEY` | — | يُفعّل البحث المباشر في الويب |
 | `MUHAQQIQ_MAX_SUBQUESTIONS` | `5` | عرض التوزيع المتوازي |
@@ -482,11 +482,15 @@ uv run ruff check src tests
 
 ### الفريق
 
-<!-- استبدل معرّف GitHub قبل التسليم. -->
+<!-- استبدل معرّفات GitHub قبل التسليم. -->
 
 | العضو | GitHub | المساهمة |
 |---|---|---|
-| القحطاني | `@your-handle` | معمارية الوكيل، تصميم الرسم البياني، طبقة الأدوات، الواجهة البرمجية، التوثيق |
+| عبدالله اليمني | `@your-handle` | معمارية الوكيل، تصميم الرسم البياني، التوثيق |
+| عبدالله القحطاني | `@your-handle` | طبقة الأدوات، تكامل MCP |
+| فيصل بن باز | `@your-handle` | الواجهة البرمجية والنشر |
+| سعود آل مبارك | `@your-handle` | مهارات الوكيل، المُستدِلّ المحلي |
+| يزيد بن ثنيان | `@your-handle` | الاختبار والتقييم |
 
 ### الرخصة
 

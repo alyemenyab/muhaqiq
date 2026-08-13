@@ -300,7 +300,7 @@ Everything is environment-driven, with a working default for every value. See
 |---|---|---|
 | `MUHAQQIQ_LLM_PROVIDER` | `offline` | `offline` \| `openrouter` |
 | `OPENROUTER_API_KEY` | — | Enables hosted models |
-| `MUHAQQIQ_MODEL` | `anthropic/claude-sonnet-4.5` | Model for the writing stages |
+| `MUHAQQIQ_MODEL` | `openai/gpt-4o` | Model for the writing stages |
 | `MUHAQQIQ_FAST_MODEL` | `openai/gpt-4o-mini` | Model for planning and critique |
 | `MUHAQQIQ_SEARCH_PROVIDER` | `offline` | `offline` \| `tavily` |
 | `TAVILY_API_KEY` | — | Enables live web search |
@@ -618,11 +618,15 @@ understanding the system.
 
 ### Team
 
-<!-- Replace the GitHub handle before submitting. -->
+<!-- Replace the GitHub handles before submitting. -->
 
 | Member | GitHub | Contribution |
 |---|---|---|
-| Alqahtani | `@your-handle` | Agent architecture, graph design, tool layer, API, documentation |
+| Abdullah Al-Yamani (عبدالله اليمني) | `@your-handle` | Agent architecture, graph design, documentation |
+| Abdullah Al-Qahtani (عبدالله القحطاني) | `@your-handle` | Tool layer, MCP integration |
+| Faisal bin Baz (فيصل بن باز) | `@your-handle` | API and deployment |
+| Saud Al-Mubarak (سعود آل مبارك) | `@your-handle` | Agent Skills, offline reasoner |
+| Yazid bin Thunayan (يزيد بن ثنيان) | `@your-handle` | Testing and evaluation |
 
 ### Capstone checklist
 
