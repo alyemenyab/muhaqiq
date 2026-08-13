@@ -1,0 +1,48 @@
+# Two services, because the tool layer is meant to be deployable on its own:
+# `api` runs the agent, `tools` runs the MCP server the agent talks to. Set
+# MUHAQQIQ_USE_MCP=true (already set below) to exercise that path; unset it and
+# the agent falls back to in-process tools without any other change.
+#
+#   docker compose up --build          (or: podman compose up --build)
+#   curl localhost:8000/healthz
+
+services:
+  tools:
+    build: .
+    image: muhaqqiq:latest
+    command: ["python", "-m", "muhaqqiq.mcp_server", "--http", "--host", "0.0.0.0", "--port", "8765"]
+    environment:
+      MUHAQQIQ_SEARCH_PROVIDER: ${MUHAQQIQ_SEARCH_PROVIDER:-offline}
+      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
+    expose:
+      - "8765"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket;s=socket.create_connection(('127.0.0.1',8765),3);s.close()"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    image: muhaqqiq:latest
+    depends_on:
+      tools:
+        condition: service_healthy
+    environment:
+      MUHAQQIQ_LLM_PROVIDER: ${MUHAQQIQ_LLM_PROVIDER:-offline}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      MUHAQQIQ_MODEL: ${MUHAQQIQ_MODEL:-anthropic/claude-sonnet-4.5}
+      MUHAQQIQ_SEARCH_PROVIDER: ${MUHAQQIQ_SEARCH_PROVIDER:-offline}
+      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
+      MUHAQQIQ_USE_MCP: "true"
+      MUHAQQIQ_MCP_URL: "http://tools:8765/mcp"
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+    ports:
+      - "8000:8000"
+    volumes:
+      - muhaqqiq-runs:/app/.muhaqqiq
+      - ./out:/app/out
+
+volumes:
+  muhaqqiq-runs:
